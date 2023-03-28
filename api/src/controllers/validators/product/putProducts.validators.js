@@ -1,6 +1,6 @@
-import { ApiError } from "../../errors/ApiError.js"
+import { ApiError } from "../../../errors/ApiError.js"
 
-export const putProductsValidator = (obj, pid,products) => {   
+export const putProductsValidator = async (obj,product) => {   
     //validate values
     for (const i in obj) {
         //keys correct?
@@ -21,8 +21,6 @@ export const putProductsValidator = (obj, pid,products) => {
         if ((i === 'thumbnail') && (typeof obj[i] !== 'object')){throw new ApiError(`${i} ${obj[i]} not valid`, 400)}
     }
     //product exist?
-    const prod = products.filter(product => product.id == pid);
-    console.log(prod.length)
-    if (prod.length === 0) {throw new ApiError(`product id: ${pid} does't exist`, 404)}
+    if (!product){throw new ApiError(`product does't exist`, 406)}
     //return
 }

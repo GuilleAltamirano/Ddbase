@@ -1,6 +1,7 @@
-import { ApiError } from "../../errors/ApiError.js"
+import { productsServices } from "../../../DAOS/services/products.services.js"
+import { ApiError } from "../../../errors/ApiError.js"
 
-export const postProductsValidations = (obj, products) => {
+export const postProductsValidations = async (obj) => {
     //destructuring object
     const {title, description, code, price, stock, category, thumbnail} = obj
     //Type of key's
@@ -12,6 +13,7 @@ export const postProductsValidations = (obj, products) => {
     if ((typeof category !== 'string') || (!category)) {throw new ApiError(`category ${category} type is not valid`, 400)}
     if ((typeof thumbnail !== 'object')) {throw new ApiError(`thumbnail ${thumbnail} type is not valid`, 400)}
     //Exist product
-    if (products.some(prod => prod.code === code)) {throw new ApiError(`This code ${code} existing`, 406)}
-    //return
+    const prod = await productsServices.getProducts({code: obj.code})
+    if (prod.length !== 0) {throw new ApiError(`This code ${code} existing`, 406)}
+    //ok
 }

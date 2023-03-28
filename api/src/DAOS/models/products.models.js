@@ -7,10 +7,9 @@ const prodsSchema = new mongoose.Schema({
     description: { type: String, require: true },
     code: { type: String, require: true },
     price: { type: Number, require: true, min: 1 },
-    status: { type: Boolean, require: true },
     stock: { type: Number, require: true, min: 1 },
     category: { type: String, require: true },
-    thumbnail: { type: Array, require: true }
+    thumbnail: { type: Array }
 })
 
 export const productsModel = mongoose.model(prodsCollection, prodsSchema)

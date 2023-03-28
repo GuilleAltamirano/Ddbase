@@ -1,3 +1,4 @@
+import { isValidObjectId } from "mongoose"
 import { productsModel } from "../models/products.models.js"
 
 class ProductsServices {
@@ -5,8 +6,18 @@ class ProductsServices {
         this.products = products
     }
 
-    async getProducts () {
+    async getProducts (filter) {
+        //filter?
+        if (filter) {return this.products.find(filter)}
+        //no filter
         return this.products.find()
+    }
+
+    async getProductById (id) {
+        //is valid?
+        if (!isValidObjectId(id)){return undefined}
+        //ok
+        return this.products.findById(id)
     }
 
     async addProduct (product) {
