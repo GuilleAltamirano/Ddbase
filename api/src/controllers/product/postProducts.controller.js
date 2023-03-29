@@ -4,11 +4,12 @@ import { postProductsValidations } from "../validators/product/postProducts.vali
 export const postProductsController = async (req, res, next) => {
     try {
         //validate
-        await postProductsValidations(req.body)
-        //send
+        const productAdd = req.body
+        const validation = await postProductsValidations(productAdd)
+        //return
         res.status(200).json({
             status: true,
-            payload: await productsServices.addProduct(req.body)
+            payload: validation
         })
     } catch (err) {next(err)}
 }

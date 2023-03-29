@@ -2,6 +2,7 @@ import express from "express"
 import { mongoConnect } from "./config/mongoose.config.js"
 import { errHandler } from "./middlewares/errHandler.middlewares.js"
 import productsRouter from "./routes/products.route.js"
+import cartRouter from "./routes/carts.route.js"
 
 //Vars
 export const app = express()
@@ -14,6 +15,7 @@ mongoConnect()
 
 //routes
 app.use('/api/products', productsRouter)
+app.use('/api/carts', cartRouter)
 
 //handler error
 app.use(errHandler)

@@ -1,13 +1,14 @@
-import { productsServices } from "../../DAOS/services/products.services.js"
 import { deleteProductsValidators } from "../validators/product/deleteProducts.validators.js"
 
 export const deleteProductsController = async (req, res, next) => {
     try {
-        await deleteProductsValidators(await productsServices.getProductById(req.params.id))
+        //var
+        const pid = req.params.pid
+        const validation = await deleteProductsValidators(pid)
+        //return
         res.status(200).json({
             status: true,
-            payload: await productsServices.deleteProduct({_id: req.params.id})
+            payload: validation
         })
     } catch (err) {next(err)}
 }
-//

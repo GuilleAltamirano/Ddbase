@@ -3,12 +3,14 @@ import { putProductsValidator } from "../validators/product/putProducts.validato
 
 export const putProductsController = async (req, res, next) => {
     try {
-        //is valid?
-        await putProductsValidator(req.body, await productsServices.getProductById(req.params.id))
+        //var
+        const pid = req.params.pid
+        const update = req.body
+        const validation = await putProductsValidator(update, pid)
         //ok
         res.status(200).json({
             status: true,
-            payload: await productsServices.putProduct({_id:req.params.id}, req.body)
+            payload: validation
         })
     } catch (err) {next(err)} //next middleware
 }

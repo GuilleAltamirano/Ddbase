@@ -10,7 +10,7 @@ const productsRouter = Router()
 //REST
 productsRouter.get('', getProductsController)
 productsRouter.post('', postProductsController)
-productsRouter.put('/:id', putProductsController)
-productsRouter.delete('/:id', deleteProductsController)
+productsRouter.put('/:pid', putProductsController)
+productsRouter.delete('/:pid', deleteProductsController)
 
 export default productsRouter
