@@ -8,9 +8,9 @@ import { deleteProductsController } from "../controllers/product/deleteProducts.
 const productsRouter = Router()
 
 //REST
-productsRouter.get('', getProductsController)
-productsRouter.post('', postProductsController)
-productsRouter.put('/:pid', putProductsController)
-productsRouter.delete('/:pid', deleteProductsController)
+productsRouter.get('/products', getProductsController)
+productsRouter.post('/products', postProductsController)
+productsRouter.put('/products/:pid', putProductsController)
+productsRouter.delete('/products/:pid', deleteProductsController)
 
 export default productsRouter

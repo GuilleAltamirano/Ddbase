@@ -1,5 +1,5 @@
 import { cartsServices } from "../../../DAOS/services/Carts.services.js"
-import { ApiError } from "../../../errors/ApiError.js"
+import { ApiError } from "../../../errors/ApiError.errors.js"
 
 export const getCartIdValidator = async (cid) => {
     //exist cart?

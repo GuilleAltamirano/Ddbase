@@ -1,6 +1,6 @@
 import { cartsServices } from "../../../DAOS/services/Carts.services.js"
 import { productsServices } from "../../../DAOS/services/products.services.js"
-import { ApiError } from "../../../errors/ApiError.js"
+import { ApiError } from "../../../errors/ApiError.errors.js"
 
 
 export const postProductCartValidator = async (cid, pid) => {

@@ -1,4 +1,4 @@
-import { ApiError } from "../../../errors/ApiError.js";
+import { ApiError } from "../../../errors/ApiError.errors.js";
 import { productsServices } from '../../../DAOS/services/Products.services.js'
 
 export const deleteProductsValidators = async (pid) => {

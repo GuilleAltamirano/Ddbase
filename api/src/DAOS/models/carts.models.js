@@ -1,9 +1,15 @@
 import mongoose from "mongoose"
 
-const cartsCollection = 'carts'
+const cartsCollection = 'Carts'
 
 const cartsSchema = new mongoose.Schema({
-    products: { type: Array, require: true }
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    products: [{
+        product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true},
+        quantity: {type: Number, required: true, min: 1},
+    }],
+    total: {type: Number, required: true, min: 0, index: true},
+    createdAt: {type: Date, default: Date.now},
 })
 
 export const cartsModel = mongoose.model(cartsCollection, cartsSchema)

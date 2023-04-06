@@ -1,4 +1,4 @@
-import { ApiError } from "../errors/ApiError.js"
+import { ApiError } from "../errors/ApiError.errors.js"
 
 export const errHandler = (err, req, res, next) => {
     if (err instanceof ApiError) {
@@ -8,7 +8,7 @@ export const errHandler = (err, req, res, next) => {
         })
     }
 
-    console.log({error: err.message, stack: err.stack})
+    console.error({error: err.message, stack: err.stack})
     return res.status(500).json({
         status: false,
         error: 'Internal Server Error'

@@ -1,5 +1,5 @@
 import { productsServices } from "../../../DAOS/services/products.services.js"
-import { ApiError } from "../../../errors/ApiError.js"
+import { ApiError } from "../../../errors/ApiError.errors.js"
 
 export const postProductsValidations = async (data) => {
     //destructuring object

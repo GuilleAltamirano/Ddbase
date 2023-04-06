@@ -7,8 +7,9 @@ class CartsServices {
         this.carts = carts
     }
 
-    async getCarts () {
-        return this.carts.find()
+    async getCarts (query) {
+        if(!query){return this.carts.find()}
+        return this.carts.find(query)
     }
 
     async cartsById (id) {

@@ -1,9 +1,12 @@
 import mongoose from "mongoose"
-
 //mongo Atlas
-export const mongoConnect = async (req, res, next) => {
+export const mongoConnect = async () => {
     try {
-        mongoose.connect('mongodb+srv://lguille2000:VZ3jPYvVndnLkfpA@cluster0.hcxd8la.mongodb.net/?retryWrites=true&w=majority')
+        const uri = process.env.MONGODB_ATLAS_URI
+        mongoose.connect(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
         console.log('MongoDb connected... 🔋')
-    } catch (err) {next(err)}
+    } catch (err) {console.error(err);}
 }
