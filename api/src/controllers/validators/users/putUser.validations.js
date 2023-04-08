@@ -1,7 +1,7 @@
 import { ApiError } from "../../../errors/ApiError.errors.js"
 import { usersServices } from "../../../daos/services/Users.services.js"
 
-export const putUserValidation = async (updated, pid) => {
+export const putUserValidation = async (updated, uid) => {
     //validate values
     for (const i in updated) {
         //keys correct?
@@ -22,10 +22,10 @@ export const putUserValidation = async (updated, pid) => {
         if ((i === 'thumbnail') && (typeof updated[i] !== 'object')){throw new ApiError(`${i} ${updated[i]} not valid`, 400)}
     }
     //user exist?
-    const existUser = await usersServices.getUserById(pid)
+    const existUser = await usersServices.getUserById(uid)
     if (!existUser){throw new ApiError(`User does't exist`, 406)}
     //update
-    const userUpdated = await usersServices.putUser({"_id" : pid}, updated)
+    const userUpdated = await usersServices.putUser({"_id" : uid}, updated)
     //return
     return userUpdated
 }
