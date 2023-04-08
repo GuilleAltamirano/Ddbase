@@ -3,7 +3,7 @@ import { ApiError } from "../../../errors/ApiError.errors.js"
 
 export const postUserValidation = async (data) => {
     //destructuring object
-    const {name, surname, emailAddress, phone, job, permissions, thumbnail} = data
+    const {name, surname ,emailAddress, phone, job, permissions, thumbnail} = data
     const emailRegex = /\S+@\S+\.\S+/
     //Type of key's
     if ((typeof name !== 'string') || (!name) || (name.length < 4)) {throw new ApiError(`Name ${name} type is not valid`, 400)}

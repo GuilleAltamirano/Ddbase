@@ -1,32 +1,15 @@
 import { Router } from "express"
+import { sessionsControllers } from "../controllers/sessions/sessions.controllers.js"
+import { logoutController } from "../controllers/sessions/logout.controllers.js"
+import { loginControllers } from "../controllers/sessions/login.controllers.js"
 
 //var
 const sessionsRouter = Router()
 
 //rest
-sessionsRouter.get('/session', (req, res) => {
-    if (!req.session.counter && req.session.counter != 0) {
-        req.session.counter = 0
-        return res.send(`Bienvenido ${req.sessionID}`)
-    }
-    req.session.counter += 1
-    res.send(`Se ha visitado el sitio ${req.session.counter} veces`);
-})
-sessionsRouter.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            return res.send({ status: 'logout Error', body: err });
-        } 
-        res.send('Logout ok!')
-    })
-})  
-sessionsRouter.get('/login', (req, res) => {
-    const { username, password } = req.body
-    if (username !== 'Guille' && password !== 'Carbonero'){return res.send('Error Login')}
-    req.session.user = username
-    req.session.admin = true
-    res.send('Login success')
-})
+sessionsRouter.get('/sessions', sessionsControllers)
+sessionsRouter.get('/logout', logoutController)  
+sessionsRouter.get('/login', loginControllers)
 
 //export
 export default sessionsRouter

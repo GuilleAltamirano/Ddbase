@@ -13,6 +13,10 @@ class UserServices {
         return this.users.find()
     }
 
+    async getUserFindOne (filter) {
+        return this.users.findOne(filter)
+    }
+
     async getUserById (id) {
         //is valid?
         if (!isValidObjectId(id)){return undefined}
