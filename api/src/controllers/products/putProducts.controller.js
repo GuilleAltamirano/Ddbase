@@ -1,5 +1,4 @@
-import { productsServices } from "../../DAOS/services/products.services.js"
-import { putProductsValidator } from "../validators/product/putProducts.validators.js"
+import { putProductsValidator } from "../validators/products/putProducts.validators.js"
 
 export const putProductsController = async (req, res, next) => {
     try {

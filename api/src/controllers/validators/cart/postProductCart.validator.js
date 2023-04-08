@@ -1,5 +1,5 @@
-import { cartsServices } from "../../../DAOS/services/Carts.services.js"
-import { productsServices } from "../../../DAOS/services/products.services.js"
+import { cartsServices } from "../../../daos/services/Carts.services.js"
+import { productsServices } from "../../../daos/services/products.services.js"
 import { ApiError } from "../../../errors/ApiError.errors.js"
 
 

@@ -1,4 +1,4 @@
-import { cartsServices } from "../../../DAOS/services/Carts.services.js"
+import { cartsServices } from "../../../daos/services/Carts.services.js"
 import { ApiError } from "../../../errors/ApiError.errors.js"
 
 export const getCartIdValidator = async (cid) => {
@@ -7,4 +7,3 @@ export const getCartIdValidator = async (cid) => {
     if (!cart){throw new ApiError(`Cart id: ${cid} doesn't exist`, 404)}
     return cart.products
 }
-// await cartsServices.cartsById(req.params.id), req.params.id

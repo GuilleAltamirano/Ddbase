@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { getProductsController } from "../controllers/product/getProducts.controller.js"
-import { postProductsController } from "../controllers/product/postProducts.controller.js"
-import { putProductsController } from "../controllers/product/putProducts.controller.js"
-import { deleteProductsController } from "../controllers/product/deleteProducts.controller.js"
+import { getProductsController } from "../controllers/products/getProducts.controller.js"
+import { postProductsController } from "../controllers/products/postProducts.controller.js"
+import { putProductsController } from "../controllers/products/putProducts.controller.js"
+import { deleteProductsController } from "../controllers/products/deleteProducts.controller.js"
 
 //var
 const productsRouter = Router()

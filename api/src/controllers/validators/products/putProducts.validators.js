@@ -1,5 +1,5 @@
 import { ApiError } from "../../../errors/ApiError.errors.js"
-import { productsServices } from "../../../DAOS/services/products.services.js"
+import { productsServices } from "../../../daos/services/products.services.js"
 
 export const putProductsValidator = async (updated, pid) => {   
     //validate values

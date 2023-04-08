@@ -1,4 +1,4 @@
-import { productsServices } from "../../DAOS/services/products.services.js"
+import { productsServices } from "../../daos/services/Products.services.js"
 
 export const getProductsController = async (req, res, next) => {
     try {

@@ -1,4 +1,4 @@
-import { deleteProductsValidators } from "../validators/product/deleteProducts.validators.js"
+import { deleteProductsValidators } from "../validators/products/deleteProducts.validators.js"
 
 export const deleteProductsController = async (req, res, next) => {
     try {
