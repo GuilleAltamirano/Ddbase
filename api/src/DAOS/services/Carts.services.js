@@ -1,31 +1,22 @@
-import { isValidObjectId } from "mongoose"
-import { cartsModel } from "../models/carts.models.js"
+import { cartsModel } from "../models/carts.model.js"
 
 class CartsServices {
-    
-    constructor (carts) {
-        this.carts = carts
-    }
+        constructor (carts) {
+                this.carts = carts
+        }
 
-    async getCarts (query) {
-        if(!query){return this.carts.find()}
-        return this.carts.find(query)
-    }
+        async getCarts (query) {
+                if(!query) return this.carts.find().lean()
+                return this.carts.find(query).lean()
+        }
 
-    async cartsById (id) {
-        //is valid?
-        if (!isValidObjectId(id)){return undefined}
-        //ok
-        return this.carts.findById(id)
-    }
+        async postCart () {
+                return this.carts.create({products: []})
+        }
 
-    async createCart () {
-        return this.carts.create({products: []})
-    }
-
-    async addProductCart (id, prod) {
-        return this.carts.updateOne(id, prod)
-    }
+        async putCart (id, prod) {
+                return this.carts.updateOne(id, prod)
+        }
 
 }
 

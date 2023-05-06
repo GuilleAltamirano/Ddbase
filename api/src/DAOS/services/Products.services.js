@@ -1,35 +1,32 @@
-import { isValidObjectId } from "mongoose"
-import { productsModel } from "../models/products.models.js"
+import { productsModel } from "../models/products.model.js"
 
 class ProductsServices {
+    
     constructor (products) {
         this.products = products
     }
 
     async getProducts (filter) {
-        //filter?
-        if (filter) {return this.products.find(filter)}
-        //no filter
-        return this.products.find()
+        if (filter) return this.products.find(filter).lean()
+        
+        return this.products.find().lean()
     }
 
-    async getProductById (id) {
-        //is valid?
-        if (!isValidObjectId(id)){return undefined}
-        //ok
-        return this.products.findById(id)
+    async productsPaginate ({ page, limit, category, status, sort }) {
+        const filter = {}
+        
+        if (category) filter.category = category
+        if (status) filter.status = status
+
+        return this.products.paginate(filter, {page, limit, sort, lean: true})
     }
 
-    async addProduct (product) {
+    async postProduct (product) {
         return this.products.create(product)
     }
 
     async putProduct (id, update) {
         return this.products.updateOne(id, update)
-    }
-
-    async deleteProduct (id) {
-        return this.products.deleteOne(id)
     }
 }
 
