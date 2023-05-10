@@ -1,5 +1,3 @@
-import { config } from 'dotenv'
-config()
 import express from 'express'
 import { appConfig } from './config/app.config.js'
 import { mongoConfig } from './config/mongo.config.js'

@@ -1,4 +1,5 @@
 import { productsServices } from "../daos/services/Products.services.js"
+import { authToken } from "../utils/jwt.js"
 import { putProductValidation } from "../validations/products.validation.js"
 
 export const getProductsController = async (req, res, next) => {

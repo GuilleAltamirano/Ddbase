@@ -1,7 +1,4 @@
-import { config } from "dotenv"
-config()
 import { connect } from "mongoose"
-
 
 const URL = process.env.URL
 const ACCESS = process.env.ACCESS
